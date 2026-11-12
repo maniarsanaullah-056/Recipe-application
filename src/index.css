@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Pacifico&display=swap");
+
+/* ========== ACCENT THEMES ========== */
+:root,
+[data-accent="sunset"] {
+  --accent-1: #fbb871;
+  --accent-2: #f97362;
+}
+[data-accent="ocean"] {
+  --accent-1: #60d6f5;
+  --accent-2: #3b82f6;
+}
+[data-accent="forest"] {
+  --accent-1: #a3e635;
+  --accent-2: #10b981;
+}
+[data-accent="royal"] {
+  --accent-1: #f0abfc;
+  --accent-2: #8b5cf6;
+}
+
+/* ========== LIGHT / DARK MODE ========== */
+:root,
+[data-mode="light"] {
+  --page-bg: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+  --surface: #ffffff;
+  --surface-soft: #faf6f4;
+  --surface-glass: rgba(255, 255, 255, 0.75);
+  --text: #4a3f3b;
+  --text-muted: #948985;
+  --border: rgba(0, 0, 0, 0.07);
+  --shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+}
+
+[data-mode="dark"] {
+  --page-bg: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--accent-1) 18%, #14111a),
+    color-mix(in srgb, var(--accent-2) 25%, #14111a)
+  );
+  --surface: #1e1b26;
+  --surface-soft: #272332;
+  --surface-glass: rgba(30, 27, 38, 0.75);
+  --text: #f2ecea;
+  --text-muted: #a69fb0;
+  --border: rgba(255, 255, 255, 0.08);
+  --shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* ========== SHARED TOKENS ========== */
+:root {
+  --accent-gradient: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+  --radius: 18px;
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ========== RESET ========== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Nunito", sans-serif;
+  color: var(--text);
+  background: var(--page-bg);
+  background-attachment: fixed;
+  min-height: 100vh;
+  padding: 2rem;
+  transition: background var(--transition), color var(--transition);
+}
+
+button,
+input,
+ textarea {
+  font: inherit;
+  color: inherit;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent-gradient);
+  border-radius: 10px;
+}
+
+
+/* ========== KEYBOARD FOCUS (Tab dabane par nazar aaye) ========== */
+:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--accent-2) 75%, transparent);
+  outline-offset: 3px;
+}
+
+/* Inputs ki apni glow wali border hai, is liye outline nahi */
+input:focus-visible,
+textarea:focus-visible {
+  outline: none;
+}
+
+/* ========== MOTION KAM (jin ko animations se masla hota hai) ========== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

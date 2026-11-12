@@ -1,0 +1,57 @@
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--surface) 25%,
+    color-mix(in srgb, var(--accent-2) 16%, var(--surface)) 50%,
+    var(--surface) 75%
+  );
+  background-size: 200% 100%;
+  animation: detail-shimmer 1.3s linear infinite;
+}
+
+.detail-loader__hero {
+  height: 320px;
+}
+
+.detail-loader__meta {
+  display: flex;
+  gap: 2rem;
+  padding: 2.5rem 2.5rem 1.5rem;
+}
+
+.detail-loader__pill {
+  width: 140px;
+  height: 22px;
+  border-radius: 12px;
+}
+
+.detail-loader__body {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.2rem 2rem;
+  padding: 1.5rem 2.5rem;
+}
+
+.detail-loader__line {
+  height: 14px;
+  border-radius: 8px;
+}
+
+@keyframes detail-shimmer {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
+
+@media (max-width: 860px) {
+  .detail-loader__hero {
+    height: 240px;
+  }
+  .detail-loader__meta,
+  .detail-loader__body {
+    padding-inline: 1.5rem;
+  }
+}

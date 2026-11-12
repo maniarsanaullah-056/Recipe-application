@@ -1,0 +1,213 @@
+.recipe-form__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 1.1rem;
+}
+
+.field,
+.ingredients-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 0;
+}
+
+.field--full {
+  grid-column: 1 / -1;
+}
+
+.field__label {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.field__error {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #ef4444;
+}
+
+/* ===== Inputs ===== */
+.form-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  background: var(--surface-soft);
+  border: 2px solid transparent;
+  border-radius: 12px;
+  transition: var(--transition);
+}
+
+.form-input::placeholder {
+  color: var(--text-muted);
+  opacity: 0.65;
+}
+
+.form-input:hover {
+  border-color: color-mix(in srgb, var(--accent-2) 30%, transparent);
+}
+
+.form-input:focus {
+  border-color: var(--accent-2);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent-2) 20%, transparent);
+}
+
+.form-input.is-invalid {
+  border-color: #ef4444;
+}
+
+.form-textarea {
+  min-height: 110px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+/* ===== Ingredient rows ===== */
+.ingredients-field {
+  border: none;
+  padding: 0;
+}
+
+.ing-row {
+  display: grid;
+  grid-template-columns: 80px 140px 1fr 40px;
+  grid-template-areas: "qty unit desc rm";
+  gap: 0.5rem;
+  animation: row-in 0.3s ease both;
+}
+
+.ing-row__qty {
+  grid-area: qty;
+}
+.ing-row__unit {
+  grid-area: unit;
+}
+.ing-row__desc {
+  grid-area: desc;
+}
+.ing-row__remove {
+  grid-area: rm;
+}
+
+.ing-row__remove {
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  transition: var(--transition);
+}
+
+.ing-row__remove:hover:not(:disabled) {
+  background: #ef4444;
+  color: #fff;
+  transform: scale(1.08);
+}
+
+.ing-row__remove:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.add-row-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.7rem;
+  border: 2px dashed color-mix(in srgb, var(--accent-2) 45%, transparent);
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--accent-2);
+  transition: var(--transition);
+}
+
+.add-row-btn:hover {
+  background: color-mix(in srgb, var(--accent-2) 10%, transparent);
+  border-style: solid;
+  transform: translateY(-2px);
+}
+
+/* ===== Buttons (neeche chipke rehte hain) ===== */
+.recipe-form__actions {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.7rem;
+  margin-top: 1.2rem;
+  padding: 1rem 0 1.2rem;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+}
+
+.form-btn {
+  padding: 0.8rem 1.8rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: var(--transition);
+}
+
+.form-btn--ghost {
+  border: 2px solid var(--border);
+  color: var(--text-muted);
+}
+
+.form-btn--ghost:hover {
+  border-color: var(--accent-2);
+  color: var(--accent-2);
+}
+
+.form-btn--primary {
+  background: var(--accent-gradient);
+  color: #fff;
+}
+
+.form-btn--primary:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--accent-2) 50%, transparent);
+}
+
+.form-btn:active {
+  transform: scale(0.97);
+}
+
+@keyframes row-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 560px) {
+  .recipe-form__grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Row 1: qty, unit, delete. Row 2: poori width ka ingredient naam */
+  .ing-row {
+    grid-template-columns: 1fr 1fr 40px;
+    grid-template-areas:
+      "qty  unit rm"
+      "desc desc desc";
+    padding-bottom: 0.6rem;
+  }
+
+  .form-btn {
+    flex: 1;
+  }
+}

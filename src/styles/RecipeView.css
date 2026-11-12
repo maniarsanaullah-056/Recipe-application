@@ -1,0 +1,279 @@
+.recipe {
+  animation: recipe-in 0.5s ease both;
+}
+
+/* ===== Hero ===== */
+.hero {
+  position: relative;
+  margin-bottom: 3.2rem;
+}
+
+.hero__frame {
+  position: relative;
+  height: 320px;
+  overflow: hidden;
+  background: var(--accent-gradient);
+}
+
+/* Image ke upar accent color ki halki tint */
+.hero__frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    color-mix(in srgb, var(--accent-2) 45%, transparent),
+    transparent 65%
+  );
+}
+
+.hero__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1s ease;
+}
+
+.hero:hover .hero__img {
+  transform: scale(1.08);
+}
+
+.hero__title {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  z-index: 2;
+  width: max-content;
+  max-width: 80%;
+  padding: 0.8rem 1.6rem;
+  background: var(--accent-gradient);
+  color: #fff;
+  font-size: clamp(1.1rem, 3vw, 1.8rem);
+  font-weight: 800;
+  line-height: 1.25;
+  text-align: center;
+  text-transform: uppercase;
+  box-shadow: 0 12px 30px color-mix(in srgb, var(--accent-2) 45%, transparent);
+  transform: translate(-50%, 50%) rotate(-3deg);
+  transition: var(--transition);
+}
+
+.hero:hover .hero__title {
+  transform: translate(-50%, 50%) rotate(0deg) scale(1.04);
+}
+
+/* ===== Meta row ===== */
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 2.5rem;
+  padding: 0.5rem 2.5rem 2rem;
+}
+
+.meta__item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+}
+
+.meta__icon {
+  font-size: 1.4rem;
+  color: var(--accent-2);
+}
+
+.meta__bookmark {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  
+  border-radius: 50%;
+  font-size: 1.15rem;
+  color: #fff;
+  background: var(--accent-gradient);
+  transition: var(--transition);
+}
+
+.meta__bookmark:hover {
+  transform: scale(1.15) rotate(-8deg);
+  box-shadow: 0 8px 22px color-mix(in srgb, var(--accent-2) 55%, transparent);
+}
+
+.meta__bookmark:active {
+  transform: scale(0.94);
+}
+
+/* ===== Sections ===== */
+.section {
+  padding: 2.5rem;
+}
+
+.section--tinted {
+  background: var(--surface);
+  border-block: 1px solid var(--border);
+  transition: background var(--transition);
+}
+
+.section--center {
+  text-align: center;
+}
+
+.section__title {
+  position: relative;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--accent-2);
+}
+
+/* Title ke neeche chhoti gradient line */
+.section__title::after {
+  content: "";
+  display: block;
+  width: 46px;
+  height: 3px;
+  margin: 0.6rem auto 0;
+  border-radius: 3px;
+  background: var(--accent-gradient);
+}
+
+.section__text {
+  max-width: 520px;
+  margin: 0 auto 1.8rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.section__text strong {
+  color: var(--text);
+}
+
+/* ===== Directions button ===== */
+.directions-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 2rem;
+  border-radius: 999px;
+  background: var(--accent-gradient);
+  color: #fff;
+  font-weight: 800;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: var(--transition);
+}
+
+.directions-btn svg {
+  font-size: 1.1rem;
+  transition: var(--transition);
+}
+
+.directions-btn:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 12px 28px color-mix(in srgb, var(--accent-2) 55%, transparent);
+}
+
+.directions-btn:hover svg {
+  transform: translate(3px, -3px);
+}
+
+@keyframes recipe-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 860px) {
+  .hero__frame {
+    height: 240px;
+  }
+  .meta {
+    padding: 0.5rem 1.5rem 1.5rem;
+  }
+  .section {
+    padding: 2rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero__frame {
+    height: 200px;
+  }
+  .meta {
+    gap: 0.9rem 1.5rem;
+    padding: 0.5rem 1rem 1.2rem;
+  }
+  .section {
+    padding: 1.6rem 1rem;
+  }
+}
+/* Bookmark hone par pop animation */
+.meta__bookmark.is-active {
+  animation: bookmark-pop 0.45s ease;
+}
+
+@keyframes bookmark-pop {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.4) rotate(-14deg);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+/* ===== Right side ke buttons (delete + bookmark) ===== */
+.meta__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-left: auto;
+}
+
+.meta__delete {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  font-size: 1.15rem;
+  color: #ef4444;
+  background: var(--surface);
+  border: 2px solid color-mix(in srgb, #ef4444 40%, transparent);
+  transition: var(--transition);
+}
+
+.meta__delete:hover {
+  background: #ef4444;
+  color: #fff;
+  transform: scale(1.15) rotate(8deg);
+  box-shadow: 0 8px 22px rgba(239, 68, 68, 0.45);
+}
+
+.meta__delete:active {
+  transform: scale(0.94);
+}
+
+/* Apni recipe ka likha hua tareeqa: left align aur naye line ka khayal */
+.section__text--directions {
+  max-width: 640px;
+  text-align: left;
+  white-space: pre-line;
+  color: var(--text);
+}

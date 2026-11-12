@@ -1,0 +1,115 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  padding: 1.1rem 2.5rem;
+  background: var(--surface-glass);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+
+/* ===== Logo ===== */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.logo__icon {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--accent-gradient);
+  color: #fff;
+  font-size: 1.5rem;
+  transition: var(--transition);
+}
+
+.logo__text {
+  font-family: "Pacifico", cursive;
+  font-size: 1.7rem;
+}
+
+.logo:hover .logo__icon {
+  transform: rotate(-20deg) scale(1.12);
+  box-shadow: 0 8px 20px color-mix(in srgb, var(--accent-2) 50%, transparent);
+}
+
+/* ===== Right side ===== */
+.header__right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.nav__btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1rem;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  transition: var(--transition);
+}
+
+.nav__btn svg {
+  font-size: 1.25rem;
+  color: var(--accent-2);
+  transition: var(--transition);
+}
+
+/* VVIP hover: background tint + icon bounce + underline slide */
+.nav__btn:hover {
+  background: color-mix(in srgb, var(--accent-2) 12%, transparent);
+  color: var(--accent-2);
+  transform: translateY(-2px);
+}
+
+.nav__btn:hover svg {
+  transform: scale(1.25) rotate(-8deg);
+}
+
+.nav__btn::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 4px;
+  width: 0;
+  height: 2px;
+  background: var(--accent-gradient);
+  border-radius: 2px;
+  transition: var(--transition);
+}
+
+.nav__btn:hover::after {
+  width: 60%;
+  left: 20%;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1000px) {
+  .header {
+    padding: 1rem 1.2rem;
+  }
+  .nav__btn span {
+    display: none;
+  }
+}

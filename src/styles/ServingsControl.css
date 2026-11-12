@@ -1,0 +1,40 @@
+.servings {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+}
+
+.servings__icon {
+  font-size: 1.4rem;
+  color: var(--accent-2);
+}
+
+.servings__btns {
+  display: flex;
+  gap: 0.15rem;
+}
+
+.servings__btn {
+  display: grid;
+  place-items: center;
+  font-size: 1.45rem;
+  color: var(--accent-2);
+  border-radius: 50%;
+  transition: var(--transition);
+}
+
+.servings__btn:hover:not(:disabled) {
+  transform: scale(1.25);
+  filter: drop-shadow(0 4px 8px color-mix(in srgb, var(--accent-2) 55%, transparent));
+}
+
+.servings__btn:active:not(:disabled) {
+  transform: scale(0.9);
+}
+
+.servings__btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}

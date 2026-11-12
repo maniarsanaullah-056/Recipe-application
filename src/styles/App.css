@@ -1,0 +1,49 @@
+.app {
+  --header-h: 83px; /* Header ki height (sidebar sticky ke liye) */
+
+  max-width: 1300px;
+  min-height: calc(100vh - var(--page-pad) * 2);
+  min-height: calc(100dvh - var(--page-pad) * 2);
+  margin: 0 auto;
+  background: var(--surface-soft);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  overflow: clip;
+  transition: background var(--transition);
+}
+
+/* Do column layout: left = list, right = detail */
+.app__main {
+  display: grid;
+  grid-template-columns: minmax(300px, 400px) 1fr;
+  align-items: start;
+}
+
+/* min-width: 0 ke bina lamba content grid se bahar nikal jata hai */
+.detail {
+  min-width: 0;
+}
+
+.detail .message {
+  max-width: 460px;
+  margin: 3rem auto;
+}
+
+@media (max-width: 860px) {
+  .app {
+    border-radius: 18px;
+  }
+  .app__main {
+    grid-template-columns: 1fr;
+  }
+  .detail {
+    /* Scroll karte waqt sticky header detail ko na dhake */
+    scroll-margin-top: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .app {
+    border-radius: 14px;
+  }
+}

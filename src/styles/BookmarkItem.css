@@ -1,0 +1,97 @@
+.bookmark-item {
+  display: flex;
+  align-items: center;
+  border-radius: 14px;
+  transition: var(--transition);
+}
+
+.bookmark-item:hover {
+  background: color-mix(in srgb, var(--accent-2) 10%, transparent);
+  transform: translateX(4px);
+}
+
+.bookmark-item__main {
+  flex: 1;
+  min-width: 0; /* taake title ellipsis (...) ban sake */
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.6rem 0.8rem;
+  text-align: left;
+  border-radius: 14px;
+}
+
+.bookmark-item__img {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 50%;
+  background: var(--accent-gradient);
+  transition: var(--transition);
+}
+
+.bookmark-item:hover .bookmark-item__img {
+  transform: scale(1.1) rotate(-6deg);
+  box-shadow: 0 6px 16px color-mix(in srgb, var(--accent-2) 45%, transparent);
+}
+
+.bookmark-item__info {
+  min-width: 0;
+}
+
+.bookmark-item__title {
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  color: var(--accent-2);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bookmark-item__publisher {
+  margin-top: 0.15rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--text-muted);
+}
+
+/* Remove button: hover par nazar aata hai */
+.bookmark-item__remove {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  margin-right: 0.6rem;
+  border-radius: 50%;
+  font-size: 1rem;
+  color: var(--text-muted);
+  opacity: 0;
+  transform: scale(0.7);
+  transition: var(--transition);
+}
+
+.bookmark-item:hover .bookmark-item__remove,
+.bookmark-item__remove:focus-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.bookmark-item__remove:hover {
+  background: #ef4444;
+  color: #fff;
+  transform: rotate(90deg) scale(1.1);
+}
+
+/* Touch screen par hover nahi hota, is liye hamesha dikhao */
+@media (hover: none) {
+  .bookmark-item__remove {
+    opacity: 1;
+    transform: none;
+  }
+}

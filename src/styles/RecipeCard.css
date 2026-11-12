@@ -1,0 +1,113 @@
+.recipe-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  padding: 0.85rem 1.2rem;
+  text-align: left;
+  border-radius: 16px;
+  transition: var(--transition);
+  animation: card-in 0.45s ease both;
+}
+
+/* Left side ki gradient bar: hover aur active par aati hai */
+.recipe-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 22%;
+  bottom: 22%;
+  width: 4px;
+  border-radius: 4px;
+  background: var(--accent-gradient);
+  transform: scaleY(0);
+  transition: var(--transition);
+}
+
+.recipe-card__img {
+  flex-shrink: 0;
+  width: 58px;
+  height: 58px;
+  object-fit: cover;
+  border-radius: 50%;
+  background: var(--accent-gradient); /* image na aaye to gradient dikhe */
+  transition: var(--transition);
+}
+
+.recipe-card__info {
+  min-width: 0; /* taake title ellipsis (...) ban sake */
+}
+
+.recipe-card__title {
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  color: var(--accent-2);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.recipe-card__publisher {
+  margin-top: 0.2rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--text-muted);
+}
+
+/* ===== VVIP Hover ===== */
+.recipe-card:hover {
+  background: color-mix(in srgb, var(--accent-2) 10%, transparent);
+  transform: translateX(6px);
+}
+
+.recipe-card:hover::before {
+  transform: scaleY(1);
+}
+
+.recipe-card:hover .recipe-card__img {
+  transform: scale(1.12) rotate(-6deg);
+  box-shadow: 0 8px 20px color-mix(in srgb, var(--accent-2) 45%, transparent);
+}
+
+.recipe-card:active {
+  transform: translateX(6px) scale(0.98);
+}
+
+/* ===== Selected card ===== */
+.recipe-card.is-active {
+  background: color-mix(in srgb, var(--accent-2) 15%, transparent);
+}
+
+.recipe-card.is-active::before {
+  transform: scaleY(1);
+}
+
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* "Mine" tag: apni recipes ki pehchan */
+.recipe-card__tag {
+  display: inline-block;
+  margin-left: 0.5rem;
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: var(--accent-gradient);
+  color: #fff;
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  vertical-align: middle;
+}

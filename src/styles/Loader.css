@@ -1,0 +1,59 @@
+.loader {
+  padding: 0.3rem 0.6rem;
+}
+
+.loader__item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 0.8rem;
+}
+
+/* Shimmer (chamak) effect: circle aur lines dono par */
+.loader__circle,
+.loader__line {
+  background: linear-gradient(
+    90deg,
+    var(--surface-soft) 25%,
+    color-mix(in srgb, var(--accent-2) 16%, var(--surface-soft)) 50%,
+    var(--surface-soft) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.3s linear infinite;
+}
+
+.loader__circle {
+  flex-shrink: 0;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+}
+
+.loader__lines {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.loader__line {
+  height: 11px;
+  border-radius: 6px;
+}
+
+.loader__line--long {
+  width: 85%;
+}
+
+.loader__line--short {
+  width: 45%;
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}

@@ -1,0 +1,15 @@
+.recipe-list__count {
+  padding: 0.8rem 1.4rem 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--text-muted);
+}
+
+.recipe-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0 0.6rem 1rem;
+}

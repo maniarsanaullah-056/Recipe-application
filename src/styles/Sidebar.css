@@ -1,0 +1,26 @@
+.sidebar {
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  padding: 0.5rem 0.3rem;
+  overflow-y: auto;
+  transition: background var(--transition);
+}
+
+/* Desktop: sidebar apni jagah ruki rahe aur sirf list scroll ho */
+@media (min-width: 861px) {
+  .sidebar {
+    position: sticky;
+    top: var(--header-h);
+    align-self: start;
+    height: calc(100dvh - var(--header-h));
+  }
+}
+
+/* Mobile: list upar, chhoti height ke saath */
+@media (max-width: 860px) {
+  .sidebar {
+    max-height: 60dvh;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+}
